@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from "react";
 import InputRow from "./InputRow";
+import axios from 'axios';
 
 const page = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,19 @@ const page = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    alert(`Thank you for submitting the form!`);
+    const postData = async () => {
+      try {
+        const response = await axios.post('/api/data', formData);
+        console.log(response.data);
+        if (response.status == 201) {
+          alert(`Thank you for submitting the form!`);
+          handleReset();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    postData();
   };
   const handleReset = () => {
     setFormData({

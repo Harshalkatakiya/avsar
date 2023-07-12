@@ -1,9 +1,24 @@
 'use client';
 import Link from "next/link";
-import { useState } from "react";
-import Data from "./Data";
+import { useEffect, useState } from "react";
+import BhavyaTable from "./BhavyaTable";
+import axios from "axios";
 
 const Admin = () => {
+    const [data, setData] = useState([]);
+    const [isDataFetched, setIsDataFetched] = useState(false);
+    const baseURL = "/api/data";
+    useEffect(() => {
+        axios
+            .get(baseURL)
+            .then((response) => {
+                setData(response.data);
+                setIsDataFetched(true);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [baseURL]);
     const [user, setUser] = useState({
         email: "", password: ""
     });
@@ -21,7 +36,7 @@ const Admin = () => {
         }
     }
     return (
-        <> {loggedIn ? <Data /> : <>
+        <> {loggedIn ? <BhavyaTable data={data} /> : <>
 
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">

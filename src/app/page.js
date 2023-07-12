@@ -99,9 +99,9 @@ const page = () => {
     <>
       <div>
         <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
-          <div className="container max-w-screen-lg mx-auto min-h-[1000px]">
+          <div className="container mx-auto min-h-[1000px]">
             <div>
-              <div className="bg-white text-black rounded shadow-lg p-4 px-4 md:p-8 mb-2">
+              <div className="bg-white text-black  shadow-lg p-4 px-4 md:p-8 mb-2">
                 <div className="text-4xl font-bold">
                   Atmiya Avsar Group Event Registration
                 </div>
@@ -110,27 +110,32 @@ const page = () => {
                 </div>
                 <hr />
               </div>
-              <div className="bg-white text-black rounded shadow-lg p-3 px-3 md:p-6 mb-6">
-                <div className="text-sm">
+              <div className="bg-white text-black  shadow-lg p-3 px-3 md:p-6 mb-6">
+                <a href="/EventRules.pdf" style={{color:"blue"}}>Read / Download Event Rules</a>
+                <div className="text-sm mb-4 mt-2">
+                  
                   <input
                     type="radio"
                     name="yes"
                     value="yes"
-                    className="w-10 mt-2"
+                    className="w-10"
                   />{" "}
-                  I have read the above rules and regulation of the events and I
-                  agree to the terms above
+                  <label htmlFor="default-radio-1" className="text-lg font-normal">
+                  I have read the above rules and regulation of the events and I agree to the terms above
+                  </label>
+                  
                 </div>
                 <hr />
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-4 mb-2 mt-2">
                   <div>
                     <select
-                      className="h-10 border mt-1 rounded px-4 w-full bg-white text-black"
+                      className="h-10 border mt-1  px-4 w-full bg-white text-black"
                       name="institute"
                       value={formData.institute}
                       onChange={handleChange}
                     >
                       <optgroup label="Select Your Institute">
+                        <option value="">Select Your Institute</option>
                         <option value="Atmiya University">
                           Atmiya University
                         </option>
@@ -146,13 +151,13 @@ const page = () => {
                   </div>
                   <div>
                     <select
-                      className="h-10 border mt-1 rounded px-4 w-full bg-white text-black"
+                      className="h-10 border mt-1  px-4 w-full bg-white text-black"
                       name="eventtype"
                       value={formData.eventtype}
                       onChange={handleChange}
                     >
                       <optgroup label="Select Event Types">
-                        <option value="Solo Events">Select Event Types</option>
+                        <option value="">Select Event Types</option>
                         <option value="solo">Solo Events</option>
                         <option value="group">Group Events</option>
                       </optgroup>
@@ -160,7 +165,7 @@ const page = () => {
                   </div>
                   <div>
                     <select
-                      className="h-10 border mt-1 rounded px-4 w-full bg-white text-black"
+                      className="h-10 border mt-1  px-4 w-full bg-white text-black"
                       name="groupEvent"
                       value={formData.groupEvent}
                       onChange={handleChange}
@@ -222,19 +227,19 @@ const page = () => {
                     </select>
                   </div>
                 </div>
-                <hr />
+                <hr className="mt-3 mb-3" />
                 {renderInputRows()}
-                <hr />
+                <hr  className="mt-3" />
                 {/* Add more students here */}
                 <div className="text-right mt-5">
                   <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  mr-2"
                     onClick={handleSubmit}
                   >
                     Submit
                   </button>
                   <button
-                    className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 "
                     onClick={handleReset}
                   >
                     Reset

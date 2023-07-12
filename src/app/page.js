@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import InputRow from "./InputRow";
 
-
 const page = () => {
   const [formData, setFormData] = useState({
     full_name1: "",
@@ -14,15 +13,12 @@ const page = () => {
     Enrollment: "",
     groupEvent: "",
   });
-
   const [typeofevent, setTypeOfEvent] = useState("solo");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
     alert(`Thank you for submitting the form!`);
   };
-
   const handleReset = () => {
     setFormData({
       full_name1: "",
@@ -35,10 +31,8 @@ const page = () => {
       groupEvent: "",
     });
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     if (name == "eventtype" && value == "solo") {
       setTypeOfEvent("solo")
       console.log("solo")
@@ -47,25 +41,19 @@ const page = () => {
       setTypeOfEvent("group")
       console.log("group")
     }
-
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
-
   const renderInputRows = () => {
     const { groupEvent } = formData;
-
     if (!groupEvent) {
       return null;
     }
-
     const participantCount = parseInt(groupEvent.split(" ").pop());
     //console.log(participantCount)
-
     const inputRows = [];
-
     // for (let i = 1; i <= participantCount; i++) {
     //   inputRows.push(
     //     <InputRow
@@ -88,10 +76,8 @@ const page = () => {
       );
       i++
     } while (i <= participantCount)
-
     return inputRows;
   };
-
   return (
     <>
       <div>
@@ -119,7 +105,6 @@ const page = () => {
                   agree to the terms above
                 </div>
                 <hr />
-
                 <div className="grid grid-cols-3 gap-4">
                   <div>
                     <select
@@ -142,7 +127,6 @@ const page = () => {
                       </optgroup>
                     </select>
                   </div>
-
                   <div>
                     <select
                       className="h-10 border mt-1 rounded px-4 w-full bg-white text-black"
@@ -224,7 +208,6 @@ const page = () => {
                 <hr />
                 {renderInputRows()}
                 <hr />
-
                 {/* Add more students here */}
                 <div className="text-right mt-5">
                   <button

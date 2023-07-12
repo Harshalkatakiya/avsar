@@ -6,13 +6,15 @@ import axios from 'axios';
 const page = () => {
   const [formData, setFormData] = useState({
     full_name1: "",
-    email1: "",
-    phone_number1: "",
-    level1: "",
-    department1: "",
-    semester1: "",
-    Enrollment: "",
-    groupEvent: "",
+      email1: "",
+      phone_number1: "",
+      level1: "",
+      department1: "",
+      semester1: "",
+      enrollment1: "",
+      institute:"",
+      eventtype: "",
+      groupEvent:"",
   });
   const [typeofevent, setTypeOfEvent] = useState("solo");
   const handleSubmit = (e) => {
@@ -40,8 +42,10 @@ const page = () => {
       level1: "",
       department1: "",
       semester1: "",
-      Enrollment: "",
-      groupEvent: "",
+      enrollment1: "",
+      institute:"",
+      eventtype: "",
+      groupEvent:"",
     });
   };
   const handleChange = (e) => {

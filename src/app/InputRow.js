@@ -93,11 +93,11 @@ const InputRow = ({ participantIndex, handleChange }) => {
           </select>
         </div>
         <div className="col-span-1">
-          <label htmlFor={`Enrollment${participantIndex}`}>Enrollment</label>
+          <label htmlFor={`enrollment${participantIndex}`}>Enrollment</label>
           <input
             type="text"
-            name={`Enrollment${participantIndex}`}
-            id={`Enrollment${participantIndex}`}
+            name={`enrollment${participantIndex}`}
+            id={`enrollment${participantIndex}`}
             className="h-10 border mt-1 rounded px-4 w-full bg-white"
             placeholder="Enrollment"
             onChange={(e) => handleChange(e, participantIndex)}

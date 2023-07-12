@@ -4,12 +4,12 @@ export default async function handler(req, res) {
     const client = await connectToDatabase();
 
     if (req.method === 'POST') {
-        const { formData } = req.body;
-        console.log(formData);
+        // const { formData } = req.body;
+        // console.log(formData);
         // Perform any necessary data validation or transformation here
 
         const collection = client.db().collection('users');
-        await collection.insertOne(formData);
+        await collection.insertOne(req.body);
 
         res.status(201).json({ message: 'Data inserted successfully.' });
     } else if (req.method === 'GET') {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import CheckboxDropdown from "./CheckboxDropdown";
@@ -8,17 +8,23 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 
 export default function BhavyaTable(props) {
   let data = props.data;
-  const allColumns = data && data.length > 0 ? Object.keys(data[0]).map((column) => ({
-    name: column,
-    visible: true,
-  })) : [];
-  if (allColumns == []) { data = [] }
+  const allColumns =
+    data && data.length > 0
+      ? Object.keys(data[0]).map((column) => ({
+          name: column,
+          visible: true,
+        }))
+      : [];
+  if (allColumns.length === 0) {
+    data = [];
+  }
   const [colData, setColData] = useState([]);
   const [columns, setColumns] = useState(allColumns);
   const [filteredData, setFilteredData] = useState(data);
   const [sortOrder, setSortOrder] = useState(-1);
   const [selectedFilters, setSelectedFilters] = useState({});
   const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
     if (colData.length <= 0) {
       let tempColData = [];
@@ -30,7 +36,7 @@ export default function BhavyaTable(props) {
       });
       setColData(tempColData);
     }
-  },[colData]);
+  }, [colData.length, columns]);
 
 
   const handleSort = (column) => {

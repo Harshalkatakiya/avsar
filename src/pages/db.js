@@ -1,4 +1,4 @@
-/* import { MongoClient } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 const uri = 'mongodb+srv://imbuesoftworld:mqmMHkuWGMtCCXlo@cluster0.sozqsp2.mongodb.net/avsar'; // Update with your MongoDB connection URI
 const dbName = 'avsar'; // Update with your database name
@@ -18,4 +18,4 @@ async function connectToDatabase() {
   return client;
 }
 
-export { connectToDatabase }; */
+export { connectToDatabase };

@@ -1,4 +1,4 @@
-/* import { connectToDatabase } from '../db';
+ import { connectToDatabase } from '../db';
 
 export default async function handler(req, res) {
     const client = await connectToDatabase();
@@ -12,12 +12,12 @@ export default async function handler(req, res) {
         await collection.insertOne(req.body);
 
         res.status(201).json({ message: 'Data inserted successfully.' });
-    } else if (req.method === 'GET') {
+    }/*  else if (req.method === 'GET') {
         const collection = client.db().collection('users');
         const data = await collection.find().toArray();
 
         res.status(200).json(data);
     } else {
         res.status(405).json({ message: 'Method not allowed.' });
-    }
-} */
+    } */
+} 

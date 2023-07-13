@@ -7,7 +7,7 @@ import axios from "axios";
 const Admin = () => {
     const [data, setData] = useState([]);
     const [isDataFetched, setIsDataFetched] = useState(false);
-    const baseURL = "/api/data";
+    const baseURL = '';
     useEffect(() => {
         axios
             .get(baseURL)
@@ -34,7 +34,6 @@ const Admin = () => {
         } else {
             alert('Invalid email or password. Please try again.');
         }
-
     }
     return (
         <>

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import InputRow from "./InputRow";
 import axios from 'axios';
 
-
 const page = () => {
   const [formData, setFormData] = useState({
     full_name1: "",
@@ -20,11 +19,9 @@ const page = () => {
   const [typeofevent, setTypeOfEvent] = useState("solo");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData, 'hguyy');
     const postData = async () => {
       try {
-        const response = await axios.post('/api/data', formData);
-        console.log(response.data);
+        const response = await axios.post('', formData);
         if (response.status == 201) {
           alert(`Thank you for submitting the form!`);
           handleReset();
@@ -53,11 +50,9 @@ const page = () => {
     const { name, value } = e.target;
     if (name == "eventtype" && value == "solo") {
       setTypeOfEvent("solo")
-      console.log("solo")
     }
     if (name == "eventtype" && value == "group") {
       setTypeOfEvent("group")
-      console.log("group")
     }
     setFormData((prevData) => ({
       ...prevData,

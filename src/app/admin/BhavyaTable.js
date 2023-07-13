@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-//import { CSVLink } from "react-csv";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import CheckboxDropdown from "./CheckboxDropdown";
@@ -13,24 +12,26 @@ export default function BhavyaTable(props) {
     name: column,
     visible: true,
   })) : [];
-  if (allColumns==[]) {data=[]} 
+  if (allColumns == []) { data = [] }
   const [colData, setColData] = useState([]);
   const [columns, setColumns] = useState(allColumns);
   const [filteredData, setFilteredData] = useState(data);
   const [sortOrder, setSortOrder] = useState(-1);
   const [selectedFilters, setSelectedFilters] = useState({});
   const [searchValue, setSearchValue] = useState("");
-
-  if (colData.length <= 0) {
-    let tempColData = [];
-    columns.forEach((column) => {
-      tempColData.push({
-        name: column.name,
-        selected: true,
+  useEffect(() => {
+    if (colData.length <= 0) {
+      let tempColData = [];
+      columns.forEach((column) => {
+        tempColData.push({
+          name: column.name,
+          selected: true,
+        });
       });
-    });
-    setColData(tempColData);
-  }
+      setColData(tempColData);
+    }
+  },[]);
+
 
   const handleSort = (column) => {
     let sortedData = null;
@@ -203,7 +204,7 @@ export default function BhavyaTable(props) {
             <button className="btn btn-danger mx-1" onClick={handleExportPDF}>
               Export PDF&nbsp;&nbsp;<i className="bi bi-file-earmark-pdf-fill"></i>
             </button>
-           {/*  <button className="btn btn-success mx-1">
+            {/*  <button className="btn btn-success mx-1">
               <CSVLink
                 className="text-light text-decoration-none"
                 data={handleExportCSV()}

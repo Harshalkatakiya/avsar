@@ -203,14 +203,14 @@ export default function BhavyaTable(props) {
             <button className="btn btn-danger mx-1" onClick={handleExportPDF}>
               Export PDF&nbsp;&nbsp;<i className="bi bi-file-earmark-pdf-fill"></i>
             </button>
-            <button className="btn btn-success mx-1">
-              {/* <CSVLink
+           {/*  <button className="btn btn-success mx-1">
+              <CSVLink
                 className="text-light text-decoration-none"
                 data={handleExportCSV()}
                 filename="table.csv">
                 Export CSV&nbsp;&nbsp;<i className="bi bi-filetype-csv"></i>
-              </CSVLink> */}
-            </button>
+              </CSVLink> 
+            </button>*/}
           </div>
         </div>
       </div>

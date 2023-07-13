@@ -34,6 +34,7 @@ const Admin = () => {
         } else {
             alert('Invalid email or password. Please try again.');
         }
+
     }
     return (
         <> {loggedIn ? <BhavyaTable data={data} /> : <>

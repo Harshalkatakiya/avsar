@@ -30,7 +30,7 @@ export default function BhavyaTable(props) {
       });
       setColData(tempColData);
     }
-  },[]);
+  },[colData]);
 
 
   const handleSort = (column) => {
@@ -192,9 +192,9 @@ export default function BhavyaTable(props) {
                 className="form-control"
                 placeholder="Search..."
               />
-              {/* <button className="btn btn-secondary" type="button" id="button-addon2">
+              <button className="btn btn-secondary" type="button" id="button-addon2">
                 Search
-              </button> */}
+              </button>
             </div>
           </div>
           <div className="d-flex justify-content-end my-3">

@@ -15,7 +15,7 @@
     "bootstrap-icons": "^1.10.5",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.29",
-    "mongodb": "^5.7.0",
+    "mongodb": "^5.5.0",
     "next": "13.4.9",
     "postcss": "8.4.25",
     "react": "18.2.0",

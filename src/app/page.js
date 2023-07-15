@@ -21,7 +21,7 @@ const page = () => {
     e.preventDefault();
     const postData = async () => {
       try {
-        const response = await axios.post('', formData);
+        const response = await axios.post('http://3.111.147.236:5000/participates/store', formData);
         if (response.status == 201) {
           alert(`Thank you for submitting the form!`);
           handleReset();
@@ -138,10 +138,6 @@ const page = () => {
                         <option value="Shree M. & N. Virani Science College">
                           Shree M. & N. Virani Science College
                         </option>
-                        <option value="Atmiya Institute Of Technology Science for Diploma Studies">
-                          Atmiya Institute Of Technology Science for Diploma
-                          Studies
-                        </option>
                       </optgroup>
                     </select>
                   </div>
@@ -189,12 +185,13 @@ const page = () => {
                           <option value="Shastriya Vadhya Sangeet (Tal Vadya)">Shastriya Vadhya Sangeet (Tal Vadya)</option>
                           <option value="Halvu Kanthya Sangeet">Halvu Kanthya Sangeet</option>
                           <option value="Lokgeet">Lokgeet</option>
-                          <option value="Bhajan">Bhajan</option>
+                          <option value="Bhajan">Bhajan/Prayer</option>
                           <option value="Duha Chhand">Duha Chhand</option>
                           <option value="Western Vocal Solo">Western Vocal Solo</option>
                           <option value="Mono Acting">Mono Acting</option>
                           <option value="Mimicry">Mimicry</option>
                           <option value="Classical Dance">Classical Dance</option>
+                          <option value="Story - Telling">Story - Telling</option>
                         </optgroup>) : (<optgroup label="Select Group Event you want to participate">
                           <option value="">Select Group Event</option>
                           <option value="Samuh Geet --Minimum 3 - Max Participant 6">

@@ -108,13 +108,14 @@ const InputRow = ({ participantIndex, handleChange }) => {
               <option>B.Pharm - FOHS</option>
               <option>M.Pharm - Pharmaceutics - FOHS</option>
               <option>B.A. English - FOHSS</option>
-              <option>Automobile Engineering - FODS</option>
-              <option>Civil Engineering - FODS</option>
-              <option>Computer Engineering - FODS</option>
-              <option>Mechanical Engineering - FODS</option>
-              <option>Electrical Engineering - FODS</option>
+              <option>Automobile Engineering - SODS</option>
+              <option>Civil Engineering - SODS</option>
+              <option>Computer Engineering - SODS</option>
+              <option>Mechanical Engineering - SODS</option>
+              <option>Electrical Engineering - SODS</option>
               <option>M. Com -FOBC</option>
               <option>IMBA</option>
+              <option>B.A. - English/Psychology/Economics</option>
               <option>Other</option>
             </optgroup>
           </select>
@@ -134,6 +135,8 @@ const InputRow = ({ participantIndex, handleChange }) => {
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
             </optgroup>
           </select>
         </div>

@@ -107,7 +107,9 @@ const page = () => {
                 <hr />
               </div>
               <div className="bg-white text-black  shadow-lg p-3 px-3 md:p-6 mb-6">
-                <a href="/EventRules.pdf" style={{color:"blue"}}>Read / Download Event Rules</a>
+              Read / Download Event Rules - 
+                <a href="/AtmiyaAvsarRulesEnglish.pdf" style={{color:"blue"}}>English</a> | 
+                <a href="/AtmiyaAvsarRulesGujarati.pdf" style={{color:"blue"}}>Gujarati</a>
                 <div className="text-sm mb-4 mt-2">
                   
                   <input

@@ -135,7 +135,7 @@ const page = () => {
                 </div>
                 <hr />
                 {isChecked ? 
-                (<div className="grid grid-cols-3 gap-4 mb-2 mt-2">
+                (<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2 mt-2">
                   <div>
                     <select
                       className="h-10 border mt-1  px-4 w-full bg-white text-black"

@@ -6,34 +6,28 @@ import axios from 'axios';
 const page = () => {
   const [formData, setFormData] = useState({
     full_name1: "",
-      email1: "",
-      phone_number1: "",
-      level1: "",
-      department1: "",
-      semester1: "",
-      enrollment1: "",
-      institute:"",
-      eventtype: "",
-      groupEvent:"",
+    email1: "",
+    phone_number1: "",
+    level1: "",
+    department1: "",
+    semester1: "",
+    enrollment1: "",
+    institute: "",
+    eventtype: "",
+    groupEvent: "",
   });
   const [typeofevent, setTypeOfEvent] = useState("solo");
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const postData = async () => {
-      try {
-        const response = await axios.post('https://3.111.147.236:5000/participates/store', formData);
-        //const response = await axios.post('http://localhost:3000/participates/store', formData);
-        if (response.status == 201) {
-          //alert(response.data.text);
-          setRegistrationSuccess(true);
-          setSuccessMessage(response.data.text)
-          handleReset();
-        }
-      } catch (error) {
-        console.error(error);
+    try {
+      const response = await axios.post('api/post', formData);
+      if(response.status===200){
+        alert(`Thank you for submitting the form!`);
+        handleReset();
       }
-    };
-    postData();
+    } catch (error) {
+      console.error(error);
+    }
   };
   const handleReset = () => {
     setFormData({
@@ -44,9 +38,9 @@ const page = () => {
       department1: "",
       semester1: "",
       enrollment1: "",
-      institute:"",
+      institute: "",
       eventtype: "",
-      groupEvent:"",
+      groupEvent: "",
     });
   };
   const handleChange = (e) => {
@@ -96,8 +90,6 @@ const page = () => {
   };
 
   const [isChecked, setIsChecked] = useState(false);
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
-  const [successmessage, setSuccessMessage] = useState("")
 
   const handleRadioButtonChange = (event) => {
     setIsChecked(event.target.checked);
@@ -118,13 +110,13 @@ const page = () => {
                 </div>
                 <hr />
               </div>
-              
-              { !registrationSuccess ? (<div className="bg-white text-black  shadow-lg p-3 px-3 md:p-6 mb-6">
-              Read / Download Event Rules - 
-                <a href="/AtmiyaAvsarRulesEnglish.pdf" style={{color:"blue"}}> English</a> | 
-                <a href="/AtmiyaAvsarRulesGujarati.pdf" style={{color:"blue"}}> Gujarati</a>
-                <div className="text-sm mb-4 mt-2">                  
+              <div className="bg-white text-black  shadow-lg p-3 px-3 md:p-6 mb-6">
+                Read / Download Event Rules -
+                <a href="/AtmiyaAvsarRulesEnglish.pdf" style={{ color: "blue" }}> English</a> |
+                <a href="/AtmiyaAvsarRulesGujarati.pdf" style={{ color: "blue" }}> Gujarati</a>
+                <div className="text-sm mb-4 mt-2">
                   <input
+                  id="default-radio-1"
                     type="radio"
                     name="concent"
                     value="yes"
@@ -133,8 +125,8 @@ const page = () => {
                     onChange={handleRadioButtonChange}
                   />{" "}
                   <label htmlFor="default-radio-1" className="text-lg font-normal">
-                  I have read the above rules and regulation of the events and I agree to the terms above <span style={{color:"red"}}>(Must select Radio Button)</span>.
-                  </label>                  
+                    I have read the above rules and regulation of the events and I agree to the terms above
+                  </label>
                 </div>
                 <hr />
                 {isChecked ? (<div className="grid grid-cols-3 gap-4 mb-2 mt-2">
@@ -234,12 +226,12 @@ const page = () => {
                       }
                     </select>
                   </div>
-                </div>):<></>}
+                </div>) : <></>}
                 <hr className="mt-3 mb-3" />
                 {renderInputRows()}
-                <hr  className="mt-3" />
+                <hr className="mt-3" />
                 {/* Add more students here */}
-                {isChecked ? (<div className="text-right mt-5">
+                <div className="text-right mt-5">
                   <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  mr-2"
                     onClick={handleSubmit}
@@ -252,13 +244,10 @@ const page = () => {
                   >
                     Reset
                   </button>
-                </div>):<></>}
-              </div>) : (
-                <div dangerouslySetInnerHTML={{ __html: successmessage }} className="bg-white text-black  shadow-lg p-3 px-3 md:p-6 mb-6 text-red-600 font-bold mb-2">
                 </div>
-              )}
-            </div>            
-          </div>          
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

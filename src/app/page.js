@@ -21,7 +21,7 @@ const page = () => {
     e.preventDefault();
     const postData = async () => {
       try {
-        const response = await axios.post('http://3.111.147.236:5000/participates/store', formData);
+        const response = await axios.post('https://3.111.147.236:5000/participates/store', formData);
         if (response.status == 201) {
           alert(`Thank you for submitting the form!`);
           handleReset();

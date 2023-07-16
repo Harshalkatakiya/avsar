@@ -91,6 +91,13 @@ const page = () => {
     } while (i <= participantCount)
     return inputRows;
   };
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleRadioButtonChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
+
   return (
     <>
       <div>
@@ -108,23 +115,23 @@ const page = () => {
               </div>
               <div className="bg-white text-black  shadow-lg p-3 px-3 md:p-6 mb-6">
               Read / Download Event Rules - 
-                <a href="/AtmiyaAvsarRulesEnglish.pdf" style={{color:"blue"}}>English</a> | 
-                <a href="/AtmiyaAvsarRulesGujarati.pdf" style={{color:"blue"}}>Gujarati</a>
-                <div className="text-sm mb-4 mt-2">
-                  
+                <a href="/AtmiyaAvsarRulesEnglish.pdf" style={{color:"blue"}}> English</a> | 
+                <a href="/AtmiyaAvsarRulesGujarati.pdf" style={{color:"blue"}}> Gujarati</a>
+                <div className="text-sm mb-4 mt-2">                  
                   <input
                     type="radio"
-                    name="yes"
+                    name="concent"
                     value="yes"
                     className="w-10"
+                    checked={isChecked}
+                    onChange={handleRadioButtonChange}
                   />{" "}
                   <label htmlFor="default-radio-1" className="text-lg font-normal">
                   I have read the above rules and regulation of the events and I agree to the terms above
-                  </label>
-                  
+                  </label>                  
                 </div>
                 <hr />
-                <div className="grid grid-cols-3 gap-4 mb-2 mt-2">
+                {isChecked ? (<div className="grid grid-cols-3 gap-4 mb-2 mt-2">
                   <div>
                     <select
                       className="h-10 border mt-1  px-4 w-full bg-white text-black"
@@ -221,7 +228,7 @@ const page = () => {
                       }
                     </select>
                   </div>
-                </div>
+                </div>):<></>}
                 <hr className="mt-3 mb-3" />
                 {renderInputRows()}
                 <hr  className="mt-3" />

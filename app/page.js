@@ -108,7 +108,7 @@ const page = () => {
             <div>
               <div className="bg-white text-black  shadow-lg p-4 px-4 md:p-8 mb-2">
                 <div className="text-4xl font-bold">
-                  Atmiya Avsar Group Event Registration
+                  Atmiya Avsar Event Registration
                 </div>
                 <div className="text-md font-medium mt-3">
                   Atmiya Avsar Art & Cultural Fest Event Registration

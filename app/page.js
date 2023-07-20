@@ -104,7 +104,7 @@ const page = () => {
     <>
       <div>
         <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
-          <div className="container mx-auto min-h-[1000px]">
+          <div className="w-full  mx-auto min-h-[1000px]">
             <div>
               <div className="bg-white text-black  shadow-lg p-4 px-4 md:p-8 mb-2">
                 <div className="text-4xl font-bold">
@@ -135,25 +135,7 @@ const page = () => {
                 </div>
                 <hr />
                 {isChecked ? 
-                (<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2 mt-2">
-                  <div>
-                    <select
-                      className="h-10 border mt-1  px-4 w-full bg-white text-black"
-                      name="institute"
-                      value={formData.institute}
-                      onChange={handleChange}
-                    >
-                      <optgroup label="Select Your Institute">
-                        <option value="">Select Your Institute</option>
-                        <option value="Atmiya University">
-                          Atmiya University
-                        </option>
-                        <option value="Shree M. & N. Virani Science College">
-                          Shree M. & N. Virani Science College
-                        </option>
-                      </optgroup>
-                    </select>
-                  </div>
+                (<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2 mt-2">                  
                   <div>
                     <select
                       className="h-10 border mt-1  px-4 w-full bg-white text-black"

@@ -3,7 +3,22 @@ import React from "react";
 const InputRow = ({ participantIndex, handleChange }) => {
     return (
         <div>
-            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-7 mb-1">
+            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-8 mb-1">
+                <div className="col-span-1">
+                {participantIndex == 1 ? (<label htmlFor={`level${participantIndex}`}>Institute</label>) : (<></>)}
+                    <select
+                        className="h-10 border mt-1  px-1 w-full bg-white"
+                        name={`institute${participantIndex}`}
+                        onChange={(e) => handleChange(e, participantIndex)}
+                        required
+                    >
+                        <optgroup label="Select Your Level">
+                        <option value="">Select Your Institute</option>
+                        <option value="Atmiya University">Atmiya University</option>
+                        <option value="Shree M. & N. Virani Science College">Shree M. & N. Virani Science College</option>
+                        </optgroup>
+                    </select>
+                </div>
                 <div className="col-span-1">
                     {participantIndex == 1 ? (<label htmlFor={`full_name${participantIndex}`}>Full Name</label>) : (<></>)}
                     <input

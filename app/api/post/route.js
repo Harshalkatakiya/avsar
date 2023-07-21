@@ -61,11 +61,10 @@ const capitalizeFirstThreeLetters = str => `${str.substr(0, 3).toUpperCase()}`;
 export async function POST(req, res) {
     try {
         let body = await req.json();
-        // const { eventtype, groupEvent } = body;
-        // const prefix = 'AA' + capitalizeFirstLetter(eventtype) + capitalizeFirstThreeLetters(groupEvent);
-        // const eventType = eventtype === 'solo' ? 'solo' : 'group';
-        // const registrationID = await getNextSequenceValue('registrationID', prefix, eventType);
-        const registrationID = 'AAS1';
+        const { eventtype, eventName } = body;
+        const prefix = 'AA' + capitalizeFirstLetter(eventtype) + capitalizeFirstThreeLetters(eventName);
+        const eventType = eventtype === 'solo' ? 'solo' : 'group';
+        const registrationID = await getNextSequenceValue('registrationID', prefix, eventType);
         const ParticipatesCollectionObj = new ParticipatesCollection({
         registrationID,
         ...body,

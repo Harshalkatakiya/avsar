@@ -12,14 +12,39 @@ const page = () => {
     department1: "",
     semester1: "",
     enrollment1: "",
-    institute: "",
+    institute1: "",
     eventtype: "",
-    groupEvent: "",
+    eventName: "",
   });
   const [typeofevent, setTypeOfEvent] = useState("solo");
+
+  const initialRequiredFields = ['eventtype', 'eventName', 'institute1','full_name1', 'email1','phone_number1','level1','department1','semester1','enrollment1'];
+  const [requiredFields, setRequiredFields] = useState([...new Set(initialRequiredFields)]);
+  const [validationErrors, setValidationErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
+      const errors = {};
+      requiredFields.forEach((field) => {
+        if (!formData[field]) {
+          errors[field] = `${field} is required`;
+        }
+      });
+
+      if (Object.keys(errors).length > 0) {
+        // If there are errors, you can handle them here (e.g., show error messages)
+        console.log('Form validation errors:', errors);
+        setValidationErrors(errors);
+        return;
+      }else{
+        setValidationErrors({})
+      }
+  
+      setIsSubmitting(true); // Set isSubmitting to true when form is being submitted
+
       const response = await axios.post('api/post', formData);
       if (response.status === 200) {
         alert(`Thank you for submitting the form!`);
@@ -29,6 +54,9 @@ const page = () => {
       }
     } catch (error) {
       console.error(error);
+    }
+    finally {
+      setIsSubmitting(false); // Set isSubmitting back to false after form submission is complete
     }
   };
   const handleReset = () => {
@@ -40,9 +68,9 @@ const page = () => {
       department1: "",
       semester1: "",
       enrollment1: "",
-      institute: "",
+      institute1: "",
       eventtype: "",
-      groupEvent: "",
+      eventName: "",
     });
   };
   const handleChange = (e) => {
@@ -57,13 +85,15 @@ const page = () => {
       ...prevData,
       [name]: value,
     }));
+
+    setRequiredFields([...new Set([...requiredFields, name])]);
   };
   const renderInputRows = () => {
-    const { groupEvent } = formData;
-    if (!groupEvent) {
+    const { eventName } = formData;
+    if (!eventName) {
       return null;
     }
-    const participantCount = parseInt(groupEvent.split(" ").pop());
+    const participantCount = parseInt(eventName.split(" ").pop());
     //console.log(participantCount)
     const inputRows = [];
     // for (let i = 1; i <= participantCount; i++) {
@@ -84,6 +114,7 @@ const page = () => {
           formData={formData}
           participantIndex={i}
           handleChange={handleChange}
+          validationErrors={validationErrors}
         />
       );
       i++
@@ -96,6 +127,7 @@ const page = () => {
   const [successmessage, setSuccessMessage] = useState("")
 
   const handleRadioButtonChange = (event) => {
+    console.log(event.target.checked)
     setIsChecked(event.target.checked);
   };
 
@@ -119,11 +151,12 @@ const page = () => {
                 <a href="/AtmiyaAvsarRulesEnglish.pdf" style={{ color: "blue" }}> English</a> |
                 <a href="/AtmiyaAvsarRulesGujarati.pdf" style={{ color: "blue" }}> Gujarati</a>
                 <div className="text-sm mb-4 mt-2">
-                  <input
+                <input
                     id="default-radio-1"
                     type="radio"
                     name="concent"
-                    value="yes"
+                    value={true}
+                    required={true}
                     className="w-10"
                     checked={isChecked}
                     onChange={handleRadioButtonChange}
@@ -141,6 +174,7 @@ const page = () => {
                         name="eventtype"
                         value={formData.eventtype}
                         onChange={handleChange}
+                        required="true"
                       >
                         <optgroup label="Select Event Types">
                           <option value="">Select Event Types</option>
@@ -148,13 +182,15 @@ const page = () => {
                           <option value="group">Group Events</option>
                         </optgroup>
                       </select>
+                      {validationErrors.eventtype && <div className="text-red-600">{validationErrors.eventtype}</div>}
                     </div>
                     <div>
                       <select
                         className="h-10 border mt-1  px-4 w-full bg-white text-black"
-                        name="groupEvent"
-                        value={formData.groupEvent}
+                        name="eventName"
+                        value={formData.eventName}
                         onChange={handleChange}
+                        required="true"
                       >
                         {
                           typeofevent == "solo" ? (<optgroup label="Select Group Event you want to participate">
@@ -212,6 +248,7 @@ const page = () => {
                           </optgroup>)
                         }
                       </select>
+                      {validationErrors.eventName && <div className="text-red-600">{validationErrors.eventName}</div>}
                     </div>
                   </div>) : (<></>)}
                 <hr className="mt-3 mb-3" />
@@ -223,8 +260,9 @@ const page = () => {
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  mr-2"
                       onClick={handleSubmit}
+                      disabled={isSubmitting}
                     >
-                      Submit
+                      {isSubmitting ? 'Submitting...' : 'Submit'}
                     </button>
                     <button
                       className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 "

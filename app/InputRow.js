@@ -1,11 +1,11 @@
 import React from "react";
 
-const InputRow = ({ participantIndex, handleChange }) => {
+const InputRow = ({ participantIndex, handleChange, validationErrors }) => {
     return (
         <div>
             <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-8 mb-1">
                 <div className="col-span-1">
-                {participantIndex == 1 ? (<label htmlFor={`level${participantIndex}`}>Institute</label>) : (<></>)}
+                {participantIndex == 1 ? (<label htmlFor={`institute${participantIndex}`}>Institute</label>) : (<></>)}
                     <select
                         className="h-10 border mt-1  px-1 w-full bg-white"
                         name={`institute${participantIndex}`}
@@ -18,6 +18,7 @@ const InputRow = ({ participantIndex, handleChange }) => {
                         <option value="Shree M. & N. Virani Science College">Shree M. & N. Virani Science College</option>
                         </optgroup>
                     </select>
+                    {validationErrors[`institute${participantIndex}`] && <div className="text-red-600">{validationErrors[`institute${participantIndex}`]}</div>}
                 </div>
                 <div className="col-span-1">
                     {participantIndex == 1 ? (<label htmlFor={`full_name${participantIndex}`}>Full Name</label>) : (<></>)}
@@ -30,6 +31,7 @@ const InputRow = ({ participantIndex, handleChange }) => {
                         onChange={(e) => handleChange(e, participantIndex)}
                         required
                     />
+                    {validationErrors[`full_name${participantIndex}`] && <div className="text-red-600">{validationErrors[`full_name${participantIndex}`]}</div>}
                 </div>
                 <div className="col-span-1">
                     {participantIndex == 1 ? (<label htmlFor={`email${participantIndex}`}>Email Address</label>) : (<></>)}
@@ -42,6 +44,7 @@ const InputRow = ({ participantIndex, handleChange }) => {
                         onChange={(e) => handleChange(e, participantIndex)}
                         required
                     />
+                    {validationErrors[`email${participantIndex}`] && <div className="text-red-600">{validationErrors[`email${participantIndex}`]}</div>}
                 </div>
                 <div className="col-span-1">
                     {participantIndex == 1 ? (<label htmlFor={`phone_number${participantIndex}`}>
@@ -56,6 +59,7 @@ const InputRow = ({ participantIndex, handleChange }) => {
                         onChange={(e) => handleChange(e, participantIndex)}
                         required
                     />
+                    {validationErrors[`phone_number${participantIndex}`] && <div className="text-red-600">{validationErrors[`phone_number${participantIndex}`]}</div>}
                 </div>
                 <div className="col-span-1">
                     {participantIndex == 1 ? (<label htmlFor={`level${participantIndex}`}>Level</label>) : (<></>)}
@@ -72,6 +76,7 @@ const InputRow = ({ participantIndex, handleChange }) => {
                             <option value="Ph.D.">Ph.D.</option>
                         </optgroup>
                     </select>
+                    {validationErrors[`level${participantIndex}`] && <div className="text-red-600">{validationErrors[`level${participantIndex}`]}</div>}
                 </div>
                 <div className="col-span-1">
                     {participantIndex == 1 ? (<label htmlFor={`department${participantIndex}`}>Department</label>) : (<></>)}
@@ -134,6 +139,7 @@ const InputRow = ({ participantIndex, handleChange }) => {
                             <option>Other</option>
                         </optgroup>
                     </select>
+                    {validationErrors[`department${participantIndex}`] && <div className="text-red-600">{validationErrors[`department${participantIndex}`]}</div>}
                 </div>
                 <div className="col-span-1">
                     {participantIndex == 1 ? (<label htmlFor={`semester${participantIndex}`}>Semester</label>) : (<></>)}
@@ -154,6 +160,7 @@ const InputRow = ({ participantIndex, handleChange }) => {
                             <option value="8">8</option>
                         </optgroup>
                     </select>
+                    {validationErrors[`semester${participantIndex}`] && <div className="text-red-600">{validationErrors[`semester${participantIndex}`]}</div>}
                 </div>
                 <div className="col-span-1">
                     {participantIndex == 1 ? (<label htmlFor={`enrollment${participantIndex}`}>Enrollment</label>) : (<></>)}
@@ -166,6 +173,7 @@ const InputRow = ({ participantIndex, handleChange }) => {
                         onChange={(e) => handleChange(e, participantIndex)}
                         required
                     />
+                    {validationErrors[`enrollment${participantIndex}`] && <div className="text-red-600">{validationErrors[`enrollment${participantIndex}`]}</div>}
                 </div>
             </div>
         </div>
